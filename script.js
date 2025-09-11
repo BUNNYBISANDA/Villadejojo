@@ -38,20 +38,31 @@ const lightbox = document.querySelector('.lightbox');
 const lightboxImg = document.querySelector('.lightbox-img');
 const lightboxClose = document.querySelector('.lightbox-close');
 
-document.querySelectorAll('[data-lightbox]').forEach((a) => {
-  a.addEventListener('click', (e) => {
-    e.preventDefault();
-    const href = a.getAttribute('href');
-    if (!href) return;
-    if (lightbox && lightboxImg) {
-      lightboxImg.src = href;
-      lightbox.setAttribute('aria-hidden', 'false');
-      lightbox.classList.add('open');
-    } else {
-      // Fallback: open image directly if lightbox DOM not present on this page
-      window.open(href, '_blank');
-    }
+// Ensure room images also open in the lightbox (not a new tab)
+// If any room image links are missing the data-lightbox attribute, add it.
+const roomThumbs = document.querySelectorAll('.room-card .room-media a[href], .room-block .room-photo a[href]');
+roomThumbs.forEach((a) => {
+  if (!a.hasAttribute('data-lightbox')) a.setAttribute('data-lightbox', '');
+  // Add the same quick click "pop" effect used in the gallery
+  a.addEventListener('click', () => {
+    a.classList.add('is-pop');
+    setTimeout(() => a.classList.remove('is-pop'), 180);
   });
+});
+
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[data-lightbox]');
+  if (!a) return;
+  e.preventDefault();
+  const href = a.getAttribute('href');
+  if (!href) return;
+  if (lightbox && lightboxImg) {
+    a.classList.add('is-pop');
+    setTimeout(() => a.classList.remove('is-pop'), 180);
+    lightboxImg.src = href;
+    lightbox.setAttribute('aria-hidden', 'false');
+    lightbox.classList.add('open');
+  }
 });
 
 lightboxClose?.addEventListener('click', () => {
@@ -94,7 +105,7 @@ if (chips.length && grid) {
     // Rooms page
     { sel: ['.subhero h1', '.subhero p'] },
     { sel: ['.chips .chip'] },
-    { sel: ['.rooms-grid .room-card'] },
+    { sel: ['.rooms-grid .room-card'], variant: { '.rooms-grid .room-card': 'zoom' } },
     // Add zoom-in reveal for the three room info cards on rooms page
     { sel: ['.room-list .room-block'], variant: { '.room-list .room-block': 'zoom' } },
     { sel: ['.facilities-grid .facility'] },

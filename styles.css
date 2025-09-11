@@ -19,6 +19,8 @@ img { max-width: 100%; display: block; }
 .container { width: min(1100px, 92%); margin: 0 auto; }
 .section { padding: 72px 0; }
 .section.alt { background: var(--sand); }
+/* Tighten spacing when an alt section follows a regular section */
+.section + .section.alt { padding-top: 36px; }
 
 /* Header */
 .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.86); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(233,236,239,0.7); transition: background .25s ease, box-shadow .25s ease, border-color .25s ease; }
@@ -46,6 +48,9 @@ img { max-width: 100%; display: block; }
 
 .btn { display: inline-block; padding: 12px 18px; background: var(--teal); color: #fff; border-radius: 12px; text-decoration: none; font-weight: 700; border: 1px solid var(--teal); line-height: 1; }
 .btn.ghost { background: transparent; color: #fff; border-color: #fff; }
+/* Smooth hover lift for all buttons (match index header button feel) */
+.btn { transition: transform .15s ease, box-shadow .2s ease; }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(14,77,100,.18); }
 
 /* Layout helpers */
 .grid-2 { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center; }
@@ -121,7 +126,9 @@ img { max-width: 100%; display: block; }
 .gallery-dots button[aria-selected="true"] { background: var(--teal); transform: scale(1.3); }
 
 /* Click pop effect */
-.g.is-pop img { transform: scale(1.06) !important; }
+.g.is-pop img,
+.room-media a.is-pop img,
+.room-photo a.is-pop img { transform: scale(1.06) !important; }
 
 /* Map */
 .map-embed iframe { width: 100%; height: 320px; border: 0; border-radius: 12px; }
@@ -154,6 +161,30 @@ img { max-width: 100%; display: block; }
   .nav a.btn { width: 100%; justify-content: center; }
   .features { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  /* Footer: stack content and add spacing on small screens */
+  .footer-inner { flex-direction: column; gap: 10px; text-align: center; }
+  .sm { justify-content: center; flex-wrap: wrap; gap: 14px; }
+  .sm a i { font-size: 24px; }
+  /* About image: reduce height on phones */
+  .photo-card img { height: auto; aspect-ratio: 4 / 3; max-height: 360px; width: 100%; }
+
+  /* Tighten vertical rhythm on phones */
+  .section { padding: 42px 0; }               /* was 72px */
+  .section.alt { padding: 42px 0; }
+  .section h2 { margin: 0 0 10px; }           /* reduce default h2 margins */
+
+  /* Compact lists */
+  .ticks { margin-top: 12px; }
+  .ticks li { margin: 6px 0; }
+
+  /* Features / cards spacing */
+  .features { gap: 12px; }
+  .feature { padding: 14px; }
+
+  /* Hero: reduce height on phones to cut top spacing */
+  .hero { min-height: 52vh; }
+  .hero-media img { height: 52vh; }
+  .hero-content { gap: 10px; }
 }
 
 .sm { display: flex; gap: 12px; align-items: center; }
@@ -247,6 +278,17 @@ img { max-width: 100%; display: block; }
 .will-reveal.fade, [data-reveal="fade"] { transform: none; }
 .will-reveal.zoom, [data-reveal="zoom"] { transform: scale(.96); }
 .will-reveal.zoom.is-visible, [data-reveal="zoom"].is-visible { transform: scale(1); }
+
+/* Stronger pop specifically for Rooms page cards */
+.rooms-page .room-list .room-block.will-reveal.zoom,
+.rooms-page .rooms-grid .room-card.will-reveal.zoom {
+  transform: scale(.93);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.2,.9,.2,1);
+}
+.rooms-page .room-list .room-block.will-reveal.zoom.is-visible,
+.rooms-page .rooms-grid .room-card.will-reveal.zoom.is-visible {
+  transform: scale(1);
+}
 .will-reveal.slide-up, [data-reveal="slide-up"] { transform: translateY(18px); }
 
 /* Hero: subtle ken burns on image */
