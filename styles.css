@@ -422,3 +422,29 @@ img { max-width: 100%; display: block; }
   transform: none !important;
   filter: none !important;
 }
+
+/* === Reviews (Contact replacement) ===================================== */
+/* Container card holding the reviews list and button */
+.reviews { display: grid; gap: 12px; }
+.reviews h3 { margin: 0; }
+
+/* Grid of two review cards on desktop; stacks on mobile */
+.review-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+/* Individual review card styling to match site card aesthetics */
+.review-card { background: #fff; border: 1px solid #e9ecef; border-radius: 12px; padding: 14px; display: grid; gap: 8px; }
+.review-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.review-name { font-weight: 700; }
+.review-text { margin: 0; opacity: .95; }
+
+/* Star color and spacing (Font Awesome stars) */
+.stars { color: #f5a524; line-height: 1; }
+.stars .fa-star { margin-right: 2px; }
+
+/* Align the Booking.com reviews button to the start of the card */
+.booking-reviews-btn { justify-self: start; }
+
+/* Responsive: stack the review cards on small screens */
+@media (max-width: 640px) {
+  .review-cards { grid-template-columns: 1fr; }
+}

@@ -214,13 +214,50 @@
           </ul>
           <p class="mini-note">For availability and reservations, please use your preferred booking site.</p>
         </div>
-        <form class="card contact-form" onsubmit="return sendMessage(event)">
-          <label>Name<input required type="text" name="name" placeholder="Your name" /></label>
-          <label>Email<input required type="email" name="email" placeholder="you@example.com" /></label>
-          <label>Message<textarea required name="message" rows="4" placeholder="Hello, I'd like to ask about..."></textarea></label>
-          <button class="btn" type="submit">Send Message</button>
-          <p class="form-feedback" role="status" aria-live="polite"></p>
-        </form>
+        <!-- Reviews card replaces the contact form -->
+        <div class="card reviews" aria-labelledby="reviews-title">
+          <!-- Section heading -->
+          <h3 id="reviews-title">Guest Reviews</h3>
+
+          <!-- Two sample reviews shown side by side on desktop -->
+          <div class="review-cards">
+            <!-- Review 1 -->
+            <article class="review-card">
+              <div class="review-header">
+                <strong class="review-name">Samantha, UK</strong>
+                <!-- Star rating (5/5) with accessible label -->
+                <div class="stars" aria-label="Rated 5 out of 5">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+              <p class="review-text">“Beautiful, quiet villa with a lovely pool and very kind hosts. Easy access to Galle and beaches.”</p>
+            </article>
+
+            <!-- Review 2 -->
+            <article class="review-card">
+              <div class="review-header">
+                <strong class="review-name">Nuwan, Sri Lanka</strong>
+                <!-- Star rating (5/5) with accessible label -->
+                <div class="stars" aria-label="Rated 5 out of 5">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+              <p class="review-text">“Comfortable room and great value. The garden is peaceful and the pool is perfect after hot days.”</p>
+            </article>
+          </div>
+
+          <!-- Link to external reviews on Booking.com -->
+          <a class="btn booking-reviews-btn" target="_blank" rel="noopener"
+             href="https://www.booking.com/hotel/lk/villa-jojo.en-gb.html?aid=357028&label=bin859jc-10CAsohQFCCnZpbGxhLWpvam9IM1gDaN0BiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALCrf7FBsACAdICJDVmZmZjNDc2LWM1ZmYtNDgxNi05ZDU1LWU1MWFjNjM0MWI1N9gCAeACAQ&sid=a475f18d5b8989c9348c1bdf59bc5f87&dest_id=-2217578&dest_type=city#tab-reviews">Read more reviews on Booking.com</a>
+        </div>
       </div>
     </section>
   </main>
