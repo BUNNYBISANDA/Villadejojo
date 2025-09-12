@@ -26,7 +26,7 @@ function sendMessage(e) {
   const email = form.email.value.trim();
   const message = form.message.value.trim();
   const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-  const href = `mailto:villadejojo@example.com?subject=${encodeURIComponent('Villa de Jojo Inquiry')}&body=${body}`;
+  const href = `mailto:villadejojo@gmail.com?subject=${encodeURIComponent('Villa de Jojo Inquiry')}&body=${body}`;
   window.location.href = href;
   const feedback = form.querySelector('.form-feedback');
   if (feedback) feedback.textContent = 'Opening your email app…';
