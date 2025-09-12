@@ -435,11 +435,17 @@ img { max-width: 100%; display: block; }
 .review-card { background: #fff; border: 1px solid #e9ecef; border-radius: 12px; padding: 14px; display: grid; gap: 8px; }
 .review-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .review-name { font-weight: 700; }
+.review-country { margin-left: 6px; opacity: .75; font-weight: 600; font-size: .95rem; }
+.review-meta { font-size: .9rem; opacity: .75; }
+.review-title { margin: 2px 0 0; font-size: 1.05rem; }
 .review-text { margin: 0; opacity: .95; }
 
 /* Star color and spacing (Font Awesome stars) */
 .stars { color: #f5a524; line-height: 1; }
 .stars .fa-star { margin-right: 2px; }
+
+/* Numeric rating badge (e.g., 10) */
+.rating-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 32px; height: 28px; padding: 0 8px; border-radius: 8px; background: var(--teal); color: #fff; font-weight: 800; margin-bottom: 4px; }
 
 /* Align the Booking.com reviews button to the start of the card */
 .booking-reviews-btn { justify-self: start; }
